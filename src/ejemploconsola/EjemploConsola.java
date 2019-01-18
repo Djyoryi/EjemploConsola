@@ -41,9 +41,32 @@ public class EjemploConsola {
     }
     
     private boolean palindromo(String cadena){
-    
+        String auxiliar = "";
+            for(int i=0; i<cadena.length(); i++){
+            if (cadena.charAt(i) != ' '){
+            auxiliar = auxiliar + cadena.charAt(i);
+            }
+            } 
+         //ahora en auxiliar tengo el string pero sin espacios en blanco
+         //declaro dos indices para que digan en que posiciones estoy comparando
             
+         int indiceIzq = 0;     
+         int indiceDer = auxiliar.length()-1;
+            
+         //mientras sean iguales los caracteres en esas posiciones la palabra sera un palindromo
+         //en elmomento que en el que una de esas comparaciones falle, es que no es un palindromo
+         // ademas, si el indice izquierdo es mayor que el derecho, ya he chequeado toda la frase
+         while (auxiliar.charAt(indiceIzq) == auxiliar.charAt(indiceDer) && indiceIzq <= indiceDer){
+         indiceIzq++;
+         indiceDer--;
+         }
+         boolean resultado = true;
+         if (indiceIzq < indiceDer){
+         return false; //TODO: hay que cambiar esto luego para que funcione bien   
+         }
+         return resultado;
     }
+    
     
     /**
      * @param args the command line arguments
@@ -56,6 +79,11 @@ public class EjemploConsola {
           System.out.println (Arrays.toString( ejercicio.maximos(ejercicio.listaNumeros3)));
            System.out.println (Arrays.toString( ejercicio.maximos(ejercicio.listaNumeros4)));
             System.out.println (Arrays.toString( ejercicio.maximos(ejercicio.listaNumeros5)));
+            
+            System.out.println ( ejercicio.palindromo("ACASO HUBO BUHOS ACA"));
+             System.out.println ( ejercicio.palindromo("TAC CAT"));
+             System.out.println ( ejercicio.palindromo("RRRRRACASO HUBO BUHOS ACA"));
+            
     }
     
 }
