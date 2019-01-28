@@ -19,6 +19,8 @@ public class EjemploConsola {
     int[] listaNumeros4 = {2000, 2000, -4, 1581, 5, 999, 777, 9};
     int[] listaNumeros5 = {200, 200, -4, 0, 5, -45, 777, 777};
     
+    
+    String [] listtaPalabras = {"MURCIELAGO", "CASA", "RUEDA", "CARETO", "PERDIDO"};
     //el metodo maximos va a calcular el maximo y segundo maximo de una lista de numeros
     
     private int[] maximos (int[] lista){
@@ -42,7 +44,7 @@ public class EjemploConsola {
     
     private boolean palindromo(String cadena){
         String auxiliar = "";
-            for(int i=0; i<cadena.length(); i++){
+            for(int i=0; i< cadena.length(); i++){
             if (cadena.charAt(i) != ' '){
             auxiliar = auxiliar + cadena.charAt(i);
             }
@@ -60,21 +62,58 @@ public class EjemploConsola {
          indiceIzq++;
          indiceDer--;
          }
+         // return indiceIzq > indiceDer (esta es otra solucion
          boolean resultado = true;
          if (indiceIzq < indiceDer){
          return false; //TODO: hay que cambiar esto luego para que funcione bien   
          }
          return resultado;
     }
+        
+    
+    private void palindromoV2(String cadena){
+            String auxiliar = "";
+            for(int i=0; i< cadena.length(); i++){
+                if (cadena.charAt(i) != ' '){
+                auxiliar = auxiliar + cadena.charAt(i);
+                }
+            }
+            
+             int indiceIzq = 0;     
+         int indiceDer = auxiliar.length()-1;
+         
+         while (auxiliar.charAt(indiceIzq) == auxiliar.charAt(indiceDer) && indiceIzq <= indiceDer){
+         indiceIzq++;
+         indiceDer--;
+         }
+         if (indiceIzq< indiceDer){
+         System.out.print("la cadena" + cadena + "NO es un Palindromo");
+         }else{
+             System.out.print("la cadena" + cadena + "NO es un Palindromo");
+         }
+         
+        }
     
     
+    private boolean isograma(String letras){
+       
+        for(int i=0; i< letras.length()-1; i++){
+            for(int j=i+1; j< letras.length(); j++){
+                if (letras.charAt(j) == letras.charAt(i) ){
+                return false;
+                }
+               
+    }
+        }
+        return true;
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         EjemploConsola ejercicio = new EjemploConsola();
         
-       System.out.println (Arrays.toString( ejercicio.maximos(ejercicio.listaNumeros)));
+     /*  System.out.println (Arrays.toString( ejercicio.maximos(ejercicio.listaNumeros)));
          System.out.println (Arrays.toString( ejercicio.maximos(ejercicio.listaNumeros2)));
           System.out.println (Arrays.toString( ejercicio.maximos(ejercicio.listaNumeros3)));
            System.out.println (Arrays.toString( ejercicio.maximos(ejercicio.listaNumeros4)));
@@ -84,6 +123,14 @@ public class EjemploConsola {
              System.out.println ( ejercicio.palindromo("TAC CAT"));
              System.out.println ( ejercicio.palindromo("RRRRRACASO HUBO BUHOS ACA"));
             
+              ejercicio.palindromoV2("ACASO HUBO BUHOS ACA");
+              ejercicio.palindromoV2("TAC CAT");
+              ejercicio.palindromoV2("RRRRRACASO HUBO BUHOS ACA");
+              
+     */
+     
+            System.out.println ( ejercicio.isograma("MURCIELAGO"));  
+            System.out.println ( ejercicio.isograma("CASA"));
     }
     
 }
