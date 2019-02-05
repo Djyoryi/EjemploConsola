@@ -107,6 +107,68 @@ public class EjemploConsola {
         }
         return true;
     }
+    
+    private void imprimeMes(int numX){
+        //filtra los numeros para que siempre valaga entre 0 y 7
+       numX = numX % 7;
+    int contador = 0;
+    
+    for (int j=1; j<numX; j++){
+        System.out.print("XX ");
+        contador= contador + 1;
+    
+    }
+    for (int i=1; i<=31; i++){
+    if (contador <=7){
+    if(i<=9){
+         System.out.print("0" + i);
+          System.out.print(" ");
+    }
+    if (i>9){
+        System.out.print(i);
+          System.out.print(" ");
+    }
+    contador= contador + 1;
+    }
+    if(contador==7){
+    System.out.println("");
+    contador = 0;
+    }
+    }
+    for (int x=contador; x<7; x++){
+    System.out.print("XX ");
+    }
+    }
+    
+    private boolean esAnagrama (String palabraA, String palabraB){
+        //pasamos todo a mayusculas
+    
+    palabraA = palabraA.toUpperCase();
+     palabraB = palabraB.toUpperCase();
+     
+     boolean anagrama = false; //indica si las palabras son anagramas o no.
+    if(palabraA.length() == palabraB.length()){ //si miden diferente no son angagramas con lo cual no empezamos a trabajar
+        for (int i=0; i<palabraA.length(); i++){
+            int posicion = 0;
+           while(posicion<palabraB.length() && palabraA.charAt(i)!= palabraB.charAt(posicion) ){
+            posicion++;
+               
+        }
+        if (posicion == palabraB.length()){
+        return false;
+        }else{
+        palabraB = palabraB.substring(0, posicion) + palabraB.substring(posicion+1);
+                }
+    }
+    
+    if (palabraB.length() == 0){
+        return true;
+    }
+   
+    }
+    return anagrama;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -125,12 +187,22 @@ public class EjemploConsola {
             
               ejercicio.palindromoV2("ACASO HUBO BUHOS ACA");
               ejercicio.palindromoV2("TAC CAT");
-              ejercicio.palindromoV2("RRRRRACASO HUBO BUHOS ACA");
-              
+              ejercicio.palindromoV2("RRRRRACASO HUBO BUHOS ACA");              
      */
-     
-            System.out.println ( ejercicio.isograma("MURCIELAGO"));  
+     /*     
+             System.out.println ( ejercicio.isograma("MURCIELAGO"));  
             System.out.println ( ejercicio.isograma("CASA"));
-    }
-    
+            
+            for (int i=0; i<7; i++){
+            ejercicio.imprimeMes(i);
+            System.out.println();
+            System.out.println();
+     }
+     */       
+            System.out.println ("amor roma " + ejercicio.esAnagrama("amor", "mora"));
+             System.out.println (ejercicio.esAnagrama("amore", "morao"));
+             System.out.println ("monja jamon " + ejercicio.esAnagrama("monja", "jamon"));
+            
+  
+}
 }
